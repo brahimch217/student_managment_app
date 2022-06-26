@@ -12,10 +12,31 @@ exports.Login = async (req, res) => {
         console.log(error)
     }
 }
+exports.Whilelogin = async (req, res) => {
+    const credential = {
+        email: "admin@test.com",
+        pass: "admin"
+    }
+    if (req.body.email == credential.email && req.body.pass == credential.pass) {
+        try {
+            res.redirect('/about-student',);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 
 exports.HomePage = async (req, res) => {
     try {
         res.render('index')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.about = async (req, res) => {
+    try {
+        res.render('about-student')
     } catch (error) {
         console.log(error)
     }
