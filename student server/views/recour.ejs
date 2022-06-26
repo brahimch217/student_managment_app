@@ -1,0 +1,103 @@
+<!DOCTYPE html> 
+<meta charset="utf-8"> 
+<html>
+    <link rel="stylesheet" href="css2/recour.css">
+
+	<header>
+		
+		<h1 id="title">Nous souhaitons nous améliorer</h1>
+	</header>
+	<body>
+	<div id="form-outer">
+		<p id="description">Dis moi comment je peux m'améliorer.</p>
+		<form id="survey-form">
+			<div class="rowTab"> 
+				<div class="labels"><!-- demande de nom -->
+					<label id="name-label" for="name">* Ton nom :</label>
+				</div>
+				<div class="rightTab">
+					<input autofocus type="text" name="name" id="name" class="input-field" placeholder="Nom et prénom" required>
+				</div>
+			</div>
+			<div class="rowTab">
+				<div class="labels"><!-- demande de Mail-->
+					<label id="email-label" for="email">* Ton Email :</label>
+				</div>
+				<div class="rightTab">
+					<input type="email" name="email" id="email" class="input-field" required placeholder="Ton Email">
+				</div>
+			</div>
+			<div class="rowTab">
+				<div class="labels"><!--demande d'age ma gueule-->
+					<label  >* Ton Matricule :</label>
+				</div>
+				<div class="rightTab">
+					<input name="age"  class="input-field" required placeholder="Ton Matricule">
+				</div>
+			</div>
+			<div class="rowTab">
+				<div class="labels"><!-- choix multiple sur le job-->
+					<label for="currentPos">Module :</label>
+				</div>
+				<div class="rightTab">
+					<select id="dropdown" name="currentPos" class="dropdown">
+						<option disabled selected value>Langue étranger</option>
+						<option value="student">Méthodes numériques</option>
+						<option value="job">logique Mathématique</option>
+						<option value="liberalJob">Théorie des graphes</option>
+						
+					</select>
+				</div>
+			</div>
+			<div class="rowTab">
+				<div class="labels"><!--choix multiple sur la recommendation-->
+					<label for="userRating">Quel est le probléme ?</label>
+				</div>
+				<div class="rightTab">
+					<ul style="list-style: none;">
+						<li class="radio">
+							<label>Moins<input name="radio-buttons" value="1" type="radio" class="userRatings"></label>
+						</li>
+						<li class="radio">
+							<label>Vide <input name="radio-buttons" value="2" type="radio" class="userRatings"></label>
+						</li>
+						<li class="radio">
+							<label>Aléatoire<input name="radio-buttons" value="3" type="radio" class="userRatings"></label>
+						</li>
+					</ul>
+				</div>
+			</div>
+		    <div class="rowTab">
+		      	<div class="labels"><!--choix morale-->
+		        	<label for="most-like">Type ? </label>
+		      	</div>
+		      	<div class="rightTab">
+		        	<select id="most-like" name="mostLike" class="dropdown">
+		      			<option disabled selected value>TD</option>
+		      			<option value="challenges">TP</option>
+		      			<option value="projects">Examen</option>
+		      			<option value="community">Ratrapage</option>
+		      			<option value="openSource">Taux</option>
+		    		</select>
+		      	</div>
+		    </div>
+		    <div class="rowTab">
+		    	<div class="labels">
+		    		<label for="preferences">Qu'est-ce que je dois ameliorer :<br>(choix illimité): </label>
+		    	</div>
+		    	
+		    </div>
+			<div class="rowTab">
+				<div class="labels">
+					<label for="comments">Un commentaire à ajouter?</label>
+				</div>
+				<div class="rigtTab">
+					<textarea id="comments" class="input-field" style="height:50px; resize:vertical;" placeholder="Chaque commentaire nous fait avancer, alors n'hésites pas..."></textarea>
+				</div>
+			</div>
+			<button id="submit" type="submit">Envoi !</button>
+		</form>
+	</div>
+
+	</body>
+</html>
