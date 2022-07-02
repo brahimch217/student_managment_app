@@ -1,5 +1,8 @@
 <% if(notes != '') { %>
 
+
+
+
 <div class="stepwizard">
   <div class="stepwizard-row">
     <div class="stepwizard-step">
@@ -25,6 +28,10 @@
   </div>
 </div>
 
+<% } %>
+
+
+
 
 
 <div class="container">
@@ -35,30 +42,64 @@
         <th>TD</th>
         <th>TP</th>
         <th>Examen</th>
-        <th>ratrapage</th>
+        <th>Ratrapage</th>
 
-        <th>coff</th>
-        <th>moyen unit</th>
+        <th>Coff</th>
+        <th>Moyen Unit </th>
 
-        <th>Taux</th>
+        <th> Moyen Module </th>
       </tr>
     </thead>
     <tbody>
 
 
-
+      <% if(not != '') { %>
+      <% notes.forEach(function(note, index){ %>
 
       <tr>
-        <td><%- notes.module %></td>
-        <td><%- notes.td %></td>
-        <td><%- notes.tp %></td>
-        <td><%- notes.examen %></td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td><%- notes.Note %></td>
+        <td><%- note.module %></td>
+        <td><%- note.td %></td>
+        <td><%- note.tp %></td>
+        <td><%- note.examen %></td>
+        <td><%- note.ratrapage %></td>
+        <td><%- note.coff %></td>
+        <td><%- note.Note * note.coff%></td>
+        <td><%- note.Note  %></td>
       </tr>
 
+
+
+
+      <% }) %>
+      <% } %>
+
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+
+
+
+      <% if(not != '') { %>
+
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Moyen G</td>
+        <td><%- (not.Note * not.coff) / not.coff %></td>
+      </tr>
+
+      <% } %>
 
 
 
@@ -68,5 +109,3 @@
   <a href="/recour" class="bubbly-button">Recour</a>
 </div>
 <script src="css2/style2.js"></script>
-
-<% } %>

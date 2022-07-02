@@ -37,7 +37,10 @@ const NoteShema = new mongoose.Schema({
     },
     assets_details: {
         type: String
-    }
+    },
+    coff: { type: String },
+    ratrapage: { type: String }
+
 })
 
 module.exports = mongoose.model('Notes', NoteShema);

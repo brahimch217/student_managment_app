@@ -163,6 +163,8 @@ exports.addNotesOnPost = async (req, res) => {
             Note: (((parseFloat(req.body.td) + parseFloat(req.body.tp)) / 2) * 0.4 + (parseFloat(req.body.examen) * 0.6)).toString(),
             Status: req.body.status,
             assets_details: req.body.comment,
+            coff: req.body.coff,
+            ratrapage: req.body.ratrapage
         })
         await newNote.save();
         res.redirect('/add-note');

@@ -71,14 +71,14 @@ exports.RecourOnSent = async (req, res) => {
             assets_details: req.body.assets,
         })
         await newRecour.save();
-        res.redirect('/about-student')
+        res.redirect('/recour')
     } catch (error) {
-        res.redirect('/about-student');
+        res.redirect('/recour');
     }
 }
 exports.numero = async (req, res) => {
     try {
-        const notes = await note.findOne({ numéro: '0558890861' });
+        const notes = await note.find({ numéro: '0558890861' });
         res.render('numero', { notes })
     } catch (error) {
         console.log(error)
@@ -87,10 +87,11 @@ exports.numero = async (req, res) => {
 exports.WhileDisplay = async (req, res) => {
 
     if (req.body.numero != null) {
-        const notes = await note.findOne({ numéro: req.body.numero });
+        const notes = await note.find({ numéro: req.body.numero });
+        const not = await note.findOne({ numéro: req.body.numero });
         console.log(req.body.numero)
         try {
-            res.render('note', { notes });
+            res.render('note', { notes, not });
         } catch (error) {
             console.log(error)
         }
