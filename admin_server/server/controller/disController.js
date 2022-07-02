@@ -1,7 +1,8 @@
 require('../models/database');
 const student = require('../models/student');
 const teacher = require('../models/teacher');
-const note = require('../models/note')
+const note = require('../models/note');
+const recour = require('../models/recour');
 /**
  * GET / 
  * Homepage
@@ -21,8 +22,8 @@ exports.index = async (req, res) => {
         const totelTeachersInt = teacher.length;
         const TeachersNumber = totelTeachersInt.toString();
         const limitNumber = 8;
-        const students = await student.find({}).limit(limitNumber);
-        const teachers = await teacher.find({}).limit(limitNumber);
+        const students = await student.find({}).sort({ _id: -1 }).limit(limitNumber);
+        const teachers = await teacher.find({}).sort({ _id: -1 }).limit(limitNumber);
 
         res.render('index-3', { StudentNumber: StudentNumber, TeacherNumber: TeachersNumber, students, teachers });
     } catch (error) {
@@ -80,7 +81,7 @@ exports.allStudent = async (req, res) => {
 }
 exports.addStudent = async (req, res) => {
     try {
-        const students = await student.find({});
+        const students = await student.find({}).find;
         res.render('add-student', { students });
     }
     catch (error) {
@@ -90,19 +91,20 @@ exports.addStudent = async (req, res) => {
 exports.addStudentPost = async (req, res) => {
     try {
         const newStudent = new student({
+            _id: req.body.numéro_dinscription,
             Nom: req.body.Nom,
             Prénom: req.body.Prénom,
             Email: req.body.Email,
             Address: req.body.Nom,
-            Classer: "L2",
-            Date_naissance: "17/07/2001",
-            Gener: "Homme",
+            Classer: req.body.classe,
+            Date_naissance: req.body.naissence,
+            Gener: req.body.gener,
             Groupe_sanguin: req.body.Groupe,
             Nom_parents: req.body.Nom,
             numéro_inscription: req.body.numéro_dinscription,
             Numéro_portable: req.body.Numéro,
             Numéro_portable_parents: req.body.Numéro_parents,
-            Registration_Date: "17/07/2021",
+            Registration_Date: req.body.date,
         })
         await newStudent.save();
         res.redirect('/add-student');
@@ -158,7 +160,7 @@ exports.addNotesOnPost = async (req, res) => {
             Department: req.body.department,
             semestre: req.body.semestre,
             Date: req.body.date,
-            Note: ((parseFloat(req.body.td) + parseFloat(req.body.tp) + parseFloat(req.body.examen)) / 3).toString(),
+            Note: (((parseFloat(req.body.td) + parseFloat(req.body.tp)) / 2) * 0.4 + (parseFloat(req.body.examen) * 0.6)).toString(),
             Status: req.body.status,
             assets_details: req.body.comment,
         })
@@ -249,7 +251,8 @@ exports.emailCompose = async (req, res) => {
 }
 exports.emailInbox = async (req, res) => {
     try {
-        res.render('email-inbox',);
+        const recours = await recour.find({});
+        res.render('email-inbox', { recours });
     } catch (error) {
         console.log(error)
     }
@@ -263,7 +266,9 @@ exports.pagelockscreen = async (req, res) => {
 }
 exports.readMail = async (req, res) => {
     try {
-        res.render('email-read')
+        let mailId = req.params.id;
+        const message = await recour.findById(mailId);
+        res.render('email-read', { message })
     } catch (error) {
         console.log(error)
     }

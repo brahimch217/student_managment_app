@@ -2,8 +2,12 @@ require('../models/database');
 
 const recour = require('../models/recour');
 
+const student = require('../models/student');
+
+const note = require('../models/note');
 
 
+const userNote = '';
 
 exports.Login = async (req, res) => {
     try {
@@ -13,26 +17,31 @@ exports.Login = async (req, res) => {
     }
 }
 exports.Whilelogin = async (req, res) => {
-    const credential = {
-        email: "admin@test.com",
-        pass: "admin"
-    }
-    if (req.body.email == credential.email && req.body.pass == credential.pass) {
+
+    const user = await student.findOne({ Email: req.body.email, });
+    if (req.body.email != null && req.body.pass != null) {
         try {
-            res.redirect('/about-student',);
+
+            res.render('about-student', { user });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+exports.WhileDisplay = async (req, res) => {
+
+    //const note = await note.findOne({ numéro: req.body.numero, });
+    if (req.body.numero != null) {
+        //console.log(req.body.numero)
+        try {
+            res.render('note',);
         } catch (error) {
             console.log(error)
         }
     }
 }
 
-exports.HomePage = async (req, res) => {
-    try {
-        res.render('index')
-    } catch (error) {
-        console.log(error)
-    }
-}
+
 
 exports.about = async (req, res) => {
     try {
@@ -52,17 +61,38 @@ exports.Recour = async (req, res) => {
 exports.RecourOnSent = async (req, res) => {
     try {
         const newRecour = new recour({
-            name: "sdfsdf",
-            module: "qsdfqdfqss",
-            matricule: "qsgqsgq",
-            problem: "qsdgqergqer",
-            type: "qzrgqrgq",
-            Date: "qzrgqergqe",
-            assets_details: "qzrgqrg",
+            name: req.body.prénom + req.body.nom,
+            module: req.body.module,
+            matricule: req.body.matricule,
+            email: req.body.email,
+            problem: req.body.probleme,
+            type: req.body.type,
+            Date: req.body.date,
+            assets_details: req.body.assets,
         })
         await newRecour.save();
-        res.redirect('/recour')
+        res.redirect('/about-student')
+    } catch (error) {
+        res.redirect('/about-student');
+    }
+}
+exports.numero = async (req, res) => {
+    try {
+        const notes = await note.findOne({ numéro: '0558890861' });
+        res.render('numero', { notes })
     } catch (error) {
         console.log(error)
+    }
+}
+exports.WhileDisplay = async (req, res) => {
+
+    if (req.body.numero != null) {
+        const notes = await note.findOne({ numéro: req.body.numero });
+        console.log(req.body.numero)
+        try {
+            res.render('note', { notes });
+        } catch (error) {
+            console.log(error)
+        }
     }
 }

@@ -1,0 +1,72 @@
+<% if(notes != '') { %>
+
+<div class="stepwizard">
+  <div class="stepwizard-row">
+    <div class="stepwizard-step">
+      <button type="button" class="btn btn-default btn-circle"></button>
+      <p>Matricule : <%- notes.numéro %></p>
+    </div>
+    <div class="stepwizard-step">
+      <button type="button" class="btn btn-primary btn-circle"></button>
+      <p>Nom : <%- notes.name %> </p>
+    </div>
+    <div class="stepwizard-step">
+      <button type="button" class="btn btn-default btn-circle"></button>
+      <p><%- notes.Department %></p>
+    </div>
+    <div class="stepwizard-step">
+      <button type="button" class="btn btn-default btn-circle"></button>
+      <p>Groupe : 5</p>
+    </div>
+    <div class="stepwizard-step">
+      <button type="button" class="btn btn-default btn-circle"></button>
+      <p>Semestre :<%- notes.semestre %></p>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>Module</th>
+        <th>TD</th>
+        <th>TP</th>
+        <th>Examen</th>
+        <th>ratrapage</th>
+
+        <th>coff</th>
+        <th>moyen unit</th>
+
+        <th>Taux</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+
+
+      <tr>
+        <td><%- notes.module %></td>
+        <td><%- notes.td %></td>
+        <td><%- notes.tp %></td>
+        <td><%- notes.examen %></td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td><%- notes.Note %></td>
+      </tr>
+
+
+
+
+
+    </tbody>
+  </table>
+  <a href="/recour" class="bubbly-button">Recour</a>
+</div>
+<script src="css2/style2.js"></script>
+
+<% } %>

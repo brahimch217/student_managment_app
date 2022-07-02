@@ -34,7 +34,7 @@ router.get('/app-profile', disController.AppProfile);
 router.get('/email-compose', disController.emailCompose);
 router.get('/email-inbox', disController.emailInbox);
 router.get('/page-lock-screen', disController.pagelockscreen);
-router.get('/email-read', disController.readMail)
+router.get('/email-read/:id', disController.readMail)
 /** Export router */
 module.exports = router;
 

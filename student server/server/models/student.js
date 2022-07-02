@@ -10,15 +10,13 @@ const StudentShema = new mongoose.Schema({
         type: String
     },
     Email: {
-        type: String,
-
+        type: String
     },
     Registration_Date: {
         type: String
     },
     numéro_inscription: {
-        type: String,
-
+        type: String
     },
     Classer: {
         type: String

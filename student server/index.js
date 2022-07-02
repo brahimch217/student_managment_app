@@ -6,16 +6,15 @@ const cookisParser = require('cookie-parser');
 const flash = require('connect-flash');
 const { v4: uuidv4 } = require('uuid');
 const bodyParser = require('body-parser')
-const { check, validationResult } = require('express-validator')
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 const app = express();
 const port = process.env.PORT || 7000;
 
 require('dotenv').config();
 
-app.use(cookisParser('StudentDashboard'));
+app.use(cookisParser('RecourDashboard'));
 app.use(session({
-    secret: 'StudentDashboard',
+    secret: uuidv4(),
     saveUninitialized: true,
     resave: true,
 }))

@@ -9,4 +9,6 @@ db.once('open', function () {
 
 //Models
 require('./recour');
+require('./note');
+require('./student');
 

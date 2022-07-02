@@ -11,4 +11,5 @@ db.once('open', function () {
 require('./note');
 require('./student');
 require('./teacher');
+require('./recour');
 
