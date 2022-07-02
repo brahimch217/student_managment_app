@@ -88,12 +88,12 @@ exports.WhileDisplay = async (req, res) => {
 
     if (req.body.numero != null) {
         const notes = await note.find({ numéro: req.body.numero });
-        const not = await note.findOne({ numéro: req.body.numero });
+        const not = await note.findOne({ numéro: req.body.numero, semestre: req.body.semestre });
         console.log(req.body.numero)
         try {
             res.render('note', { notes, not });
         } catch (error) {
-            console.log(error)
+            console.log("Ma afichawch")
         }
     }
 }

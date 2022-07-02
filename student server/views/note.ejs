@@ -1,21 +1,17 @@
-<% if(notes != '') { %>
-
-
-
-
+<% if(not != '') { %>
 <div class="stepwizard">
   <div class="stepwizard-row">
     <div class="stepwizard-step">
       <button type="button" class="btn btn-default btn-circle"></button>
-      <p>Matricule : <%- notes.numéro %></p>
+      <p>Matricule : <%- not.numéro %></p>
     </div>
     <div class="stepwizard-step">
       <button type="button" class="btn btn-primary btn-circle"></button>
-      <p>Nom : <%- notes.name %> </p>
+      <p>Nom : <%- not.name %> </p>
     </div>
     <div class="stepwizard-step">
       <button type="button" class="btn btn-default btn-circle"></button>
-      <p><%- notes.Department %></p>
+      <p><%- not.Department %></p>
     </div>
     <div class="stepwizard-step">
       <button type="button" class="btn btn-default btn-circle"></button>
@@ -23,7 +19,7 @@
     </div>
     <div class="stepwizard-step">
       <button type="button" class="btn btn-default btn-circle"></button>
-      <p>Semestre :<%- notes.semestre %></p>
+      <p>Semestre :<%- not.semestre %></p>
     </div>
   </div>
 </div>
@@ -84,10 +80,7 @@
         <td></td>
       </tr>
 
-
-
       <% if(not != '') { %>
-
       <tr>
         <td></td>
         <td></td>
@@ -98,7 +91,6 @@
         <td>Moyen G</td>
         <td><%- (not.Note * not.coff) / not.coff %></td>
       </tr>
-
       <% } %>
 
 
